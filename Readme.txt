@@ -1,0 +1,1 @@
+This Java program analyzes the files redditAuthors.txt and redditPosts.txt that are in the same repository. Please be sure that both of those files are in the same folder you use to launch the program.
