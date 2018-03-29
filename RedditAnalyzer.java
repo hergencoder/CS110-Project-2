@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.*;
-import java.util.Arrays;
-import java.util.Comparator;
+
 
 
 public class RedditAnalyzer {
@@ -16,19 +15,21 @@ public class RedditAnalyzer {
 		int i = 0;
 		int postToView = 0;
 		Scanner keyboard = new Scanner(System.in);
-		String biggestPoster = null;
 		int numRepeats = 0;
 		String[][] authorsNumPosts = new String[6500][2];
-		int w = 0;
-		
+
+		ArrayList<String> authorss = new ArrayList<String>();
+
 
 		while(nextLine == true){
 			postsWithAuthors[i][0] = inputPost.nextLine();
 			postsWithAuthors[i][1] = inputAuthor.nextLine();
 
+
 			i++;
 			nextLine = inputPost.hasNextLine();
 		}
+		
 		System.out.println("Which post would you like to view?");
 		try{
 			postToView = keyboard.nextInt();
@@ -36,6 +37,18 @@ public class RedditAnalyzer {
 			System.out.println("Please enter numerals");
 		}
 		System.out.println("Post: " + postsWithAuthors[postToView][0] + " By: " + postsWithAuthors[postToView][1]);
+
+		int numUniqueUsers = 0;
+		boolean userIsUnique = true;
+
+		for(int l = 0; l < postsWithAuthors.length; l++){
+			if(authorss.contains(postsWithAuthors[l][1]) == false){
+				authorss.add(postsWithAuthors[l][1]);
+			}
+		}
+
+
+		System.out.println("There are " + authorss.size() + " unique users in this list.");
 
 		for(int q=6465; q>0; q--){
 			numRepeats = 0;
@@ -62,6 +75,7 @@ public class RedditAnalyzer {
 				System.out.println(postsWithAuthors[m][0]);
 			}
 		}
+
 	}
 
 }
